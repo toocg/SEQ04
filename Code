@@ -1,0 +1,34 @@
+Problem: http://lequydon.ntucoder.net/Problem/Details/4523
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+const ll MAX=1e8+7;
+int n,beg=0,en=0,res=0,sum=0;
+ll h[MAX],s;
+main(){
+ios_base::sync_with_stdio(false);
+cin.tie(0);
+cout.tie(0);
+cin >> n >> s;
+for(int a=0;a<n;a++){
+    cin >> h[a];
+}
+int i=0,j=0;
+while(j<n){
+    while(sum<=s&&j<=n){
+        if(j-i>res){
+            res=j-i;
+            beg=i;
+            en=j;
+        }
+        sum+=h[j++];
+    }                    
+    while(sum>s){
+        sum-=h[i++];
+    }
+}
+cout << res << "\n";
+for(int z=beg;z<en;z++){
+    cout << h[z] << " ";
+    }
+}
